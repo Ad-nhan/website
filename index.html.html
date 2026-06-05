@@ -1,0 +1,1402 @@
+
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vecteron Solutions Ltd - Digital solutions, web development, mobile apps, UI/UX design, cloud solutions, and cybersecurity services.">
+    <meta name="keywords" content="web development, mobile apps, UI/UX design, cloud solutions, cybersecurity, digital strategy, Vecteron">
+    <meta name="author" content="Vecteron Solutions Ltd">
+    <meta property="og:title" content="Vecteron Solutions Ltd | Digital Excellence">
+    <meta property="og:description" content="Transforming ideas into powerful digital solutions.">
+    <meta property="og:type" content="website">
+    <title>Vecteron Solutions Ltd | Digital Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0F172A;
+            --electric-blue: #2563EB;
+            --cyan: #06B6D4;
+            --white: #FFFFFF;
+            --light-bg: #F8FAFC;
+            --text-muted: #64748B;
+            --success: #10B981;
+            --error: #EF4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo span { color: var(--cyan); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--cyan); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cyan);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, #1e293b 50%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 50px;
+            color: var(--cyan);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--electric-blue), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--electric-blue), var(--cyan));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Stats */
+        .stats-bar {
+            background: var(--white);
+            padding: 3rem 5%;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .stat-item { text-align: center; }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--electric-blue), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+
+        /* Sections */
+        section { padding: 6rem 5%; }
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--electric-blue);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* Services */
+        .services { background: var(--light-bg); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--cyan));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        .service-icon {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(6, 182, 212, 0.1));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--electric-blue);
+            margin-bottom: 1.5rem;
+        }
+        .service-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .portfolio-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+            color: var(--white);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .portfolio-overlay h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .portfolio-overlay span { color: var(--cyan); font-size: 0.9rem; }
+
+        /* Team */
+        .team { background: var(--light-bg); }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .team-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        .team-img {
+            width: 100%; height: 280px;
+            background: linear-gradient(135deg, var(--navy), var(--electric-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        .team-info { padding: 1.5rem; }
+        .team-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .team-info p { color: var(--electric-blue); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem; }
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .team-social a {
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .team-social a:hover { background: var(--electric-blue); color: var(--white); }
+
+        /* Careers */
+        .careers-list { max-width: 800px; margin: 0 auto; }
+        .career-item {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        .career-item:hover {
+            border-color: var(--electric-blue);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+        }
+        .career-info h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .career-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .career-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+        /* Project Portal */
+        .project-portal {
+            background: linear-gradient(135deg, var(--navy), #1e293b);
+            color: var(--white);
+        }
+        .project-portal .section-header h2,
+        .project-portal .section-header p { color: var(--white); }
+        .portal-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.4); }
+        .form-group textarea { min-height: 150px; resize: vertical; }
+        .form-group select option { background: var(--navy); color: var(--white); }
+        .form-error {
+            color: var(--error);
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea { border-color: var(--error); }
+        .form-group.error .form-error { display: block; }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .toast {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: var(--white);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 400px;
+        }
+        .toast.show { transform: translateX(0); }
+        .toast.success { background: var(--success); }
+        .toast.error { background: var(--error); }
+        .toast.info { background: var(--electric-blue); }
+
+        /* Spinner */
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid transparent;
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+        .btn.loading .spinner { display: inline-block; }
+        .btn.loading .btn-text { opacity: 0.7; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .contact-info h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-item i {
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--cyan));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-item div h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .contact-item div p { color: var(--text-muted); font-size: 0.95rem; }
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .contact-form .form-group input,
+        .contact-form .form-group textarea {
+            background: var(--light-bg);
+            border: 1px solid #e2e8f0;
+            color: var(--navy);
+        }
+        .contact-form .form-group input::placeholder,
+        .contact-form .form-group textarea::placeholder { color: var(--text-muted); }
+        .contact-form .form-group input:focus,
+        .contact-form .form-group textarea:focus { border-color: var(--electric-blue); }
+        .contact-form .form-group label { color: var(--navy); }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+        .footer-brand .logo { margin-bottom: 1rem; font-size: 1.8rem; }
+        .footer-brand p { color: rgba(255, 255, 255, 0.6); line-height: 1.8; }
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--cyan); }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .footer-social a {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-social a:hover { background: var(--electric-blue); transform: translateY(-3px); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px; height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%; left: 0;
+                width: 100%;
+                background: var(--navy);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .hero { padding: 7rem 5% 3rem; }
+            .stats-bar { gap: 2rem; }
+            section { padding: 4rem 5%; }
+            .portal-form { padding: 2rem 1.5rem; }
+            .toast-container { right: 1rem; left: 1rem; }
+            .toast { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-cube"></i>
+            Vecteron<span>.</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#project">Project Request</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-rocket"></i> Innovating Tomorrow's Solutions
+            </div>
+            <h1>We Build <span class="highlight">Digital Excellence</span></h1>
+            <p>Transforming ideas into powerful digital solutions. Vecteron Solutions Ltd delivers cutting-edge technology services that drive business growth.</p>
+            <div class="hero-buttons">
+                <a href="#project" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Start a Project
+                </a>
+                <a href="#portfolio" class="btn btn-outline">
+                    <i class="fas fa-eye"></i> View Our Work
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Team Members</div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+        <div class="section-header reveal">
+            <span class="section-tag">About Us</span>
+            <h2>Who We Are</h2>
+            <p>Vecteron Solutions Ltd is a forward-thinking technology company dedicated to delivering innovative digital solutions. We combine technical expertise with creative vision to help businesses thrive in the digital age.</p>
+        </div>
+        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>Our Mission</h3>
+                <p>To empower businesses with innovative technology solutions that drive growth, efficiency, and competitive advantage in an ever-evolving digital landscape.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-eye"></i></div>
+                <h3>Our Vision</h3>
+                <p>To be the leading technology partner for businesses worldwide, recognized for excellence, innovation, and unwavering commitment to client success.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-heart"></i></div>
+                <h3>Our Values</h3>
+                <p>Integrity, innovation, collaboration, and excellence form the foundation of everything we do. We believe in building lasting partnerships based on trust.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <span class="section-tag">Our Services</span>
+            <h2>Solutions We Provide</h2>
+            <p>Comprehensive digital services tailored to meet your unique business needs and drive measurable results.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Web Development</h3>
+                <p>Custom websites and web applications built with modern technologies, optimized for performance, security, and user experience.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Mobile App Development</h3>
+                <p>Native and cross-platform mobile applications that deliver seamless experiences across iOS and Android devices.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>UI/UX Design</h3>
+                <p>User-centered design solutions that combine aesthetics with functionality to create engaging digital experiences.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                <h3>Cloud Solutions</h3>
+                <p>Scalable cloud infrastructure and migration services to optimize your operations and reduce costs.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Cybersecurity</h3>
+                <p>Comprehensive security assessments and solutions to protect your digital assets and ensure compliance.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Digital Strategy</h3>
+                <p>Data-driven strategic consulting to help you navigate digital transformation and achieve business objectives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <div class="section-header reveal">
+            <span class="section-tag">Portfolio</span>
+            <h2>Our Recent Work</h2>
+            <p>Explore our portfolio of successful projects that showcase our expertise and commitment to excellence.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item reveal">
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="portfolio-overlay">
+                    <h3>E-Commerce Platform</h3>
+                    <span>Web Development</span>
+                </div>
+            </div>
+            <div class="portfolio-item reveal">
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="portfolio-overlay">
+                    <h3>HealthTech App</h3>
+                    <span>Mobile Development</span>
+                </div>
+            </div>
+            <div class="portfolio-item reveal">
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="portfolio-overlay">
+                    <h3>FinTech Dashboard</h3>
+                    <span>UI/UX Design</span>
+                </div>
+            </div>
+            <div class="portfolio-item reveal">
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="portfolio-overlay">
+                    <h3>EdTech Platform</h3>
+                    <span>Full Stack Development</span>
+                </div>
+            </div>
+            <div class="portfolio-item reveal">
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="portfolio-overlay">
+                    <h3>Real Estate Portal</h3>
+                    <span>Web Application</span>
+                </div>
+            </div>
+            <div class="portfolio-item reveal">
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display:flex; align-items:center; justify-content:center; color:var(--navy); font-size:3rem;">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="portfolio-overlay">
+                    <h3>Analytics Dashboard</h3>
+                    <span>Data Visualization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team" id="team">
+        <div class="section-header reveal">
+            <span class="section-tag">Our Team</span>
+            <h2>Meet The Experts</h2>
+            <p>Talented professionals dedicated to delivering exceptional results for our clients.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <div class="team-img"><i class="fas fa-user"></i></div>
+                <div class="team-info">
+                    <h3>Alexander Vance</h3>
+                    <p>CEO & Founder</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-img"><i class="fas fa-user"></i></div>
+                <div class="team-info">
+                    <h3>Sarah Mitchell</h3>
+                    <p>CTO</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-img"><i class="fas fa-user"></i></div>
+                <div class="team-info">
+                    <h3>James Chen</h3>
+                    <p>Lead Developer</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-img"><i class="fas fa-user"></i></div>
+                <div class="team-info">
+                    <h3>Emily Rodriguez</h3>
+                    <p>Design Director</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers -->
+    <section id="careers">
+        <div class="section-header reveal">
+            <span class="section-tag">Careers</span>
+            <h2>Join Our Team</h2>
+            <p>Be part of a dynamic team that's shaping the future of digital innovation. We're always looking for talented individuals.</p>
+        </div>
+        <div class="careers-list">
+            <div class="career-item reveal">
+                <div class="career-info">
+                    <h3>Senior Full Stack Developer</h3>
+                    <div class="career-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span><i class="fas fa-clock"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> Competitive</span>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Apply Now</a>
+            </div>
+            <div class="career-item reveal">
+                <div class="career-info">
+                    <h3>UI/UX Designer</h3>
+                    <div class="career-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Hybrid</span>
+                        <span><i class="fas fa-clock"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> Competitive</span>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Apply Now</a>
+            </div>
+            <div class="career-item reveal">
+                <div class="career-info">
+                    <h3>DevOps Engineer</h3>
+                    <div class="career-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> On-site</span>
+                        <span><i class="fas fa-clock"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> Competitive</span>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Apply Now</a>
+            </div>
+            <div class="career-item reveal">
+                <div class="career-info">
+                    <h3>Project Manager</h3>
+                    <div class="career-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Hybrid</span>
+                        <span><i class="fas fa-clock"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> Competitive</span>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Request Portal -->
+    <section class="project-portal" id="project">
+        <div class="section-header reveal">
+            <span class="section-tag" style="background: rgba(255,255,255,0.1); color: var(--cyan);">Project Request</span>
+            <h2>Start Your Project</h2>
+            <p>Tell us about your project and we'll get back to you with a tailored solution and quote.</p>
+        </div>
+        <form class="portal-form reveal" id="projectForm">
+            <div class="form-grid">
+                <div class="form-group" id="pg-name">
+                    <label>Full Name *</label>
+                    <input type="text" name="name" placeholder="John Doe" required>
+                    <span class="form-error">Please enter your full name</span>
+                </div>
+                <div class="form-group" id="pg-email">
+                    <label>Email Address *</label>
+                    <input type="email" name="email" placeholder="john@example.com" required>
+                    <span class="form-error">Please enter a valid email address</span>
+                </div>
+                <div class="form-group" id="pg-company">
+                    <label>Company Name</label>
+                    <input type="text" name="company" placeholder="Your Company">
+                </div>
+                <div class="form-group" id="pg-phone">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="+1 234 567 890">
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;" id="pg-type">
+                <label>Project Type *</label>
+                <select name="projectType" required>
+                    <option value="">Select a service</option>
+                    <option value="web">Web Development</option>
+                    <option value="mobile">Mobile App Development</option>
+                    <option value="design">UI/UX Design</option>
+                    <option value="cloud">Cloud Solutions</option>
+                    <option value="security">Cybersecurity</option>
+                    <option value="strategy">Digital Strategy</option>
+                    <option value="other">Other</option>
+                </select>
+                <span class="form-error">Please select a project type</span>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;" id="pg-budget">
+                <label>Budget Range</label>
+                <select name="budget">
+                    <option value="">Select budget range</option>
+                    <option value="5k-10k">$5,000 - $10,000</option>
+                    <option value="10k-25k">$10,000 - $25,000</option>
+                    <option value="25k-50k">$25,000 - $50,000</option>
+                    <option value="50k+">$50,000+</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 2rem;" id="pg-desc">
+                <label>Project Description *</label>
+                <textarea name="description" placeholder="Tell us about your project requirements, goals, and timeline..." required></textarea>
+                <span class="form-error">Please describe your project</span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="projectSubmitBtn">
+                <span class="spinner"></span>
+                <span class="btn-text"><i class="fas fa-paper-plane"></i> Submit Project Request</span>
+            </button>
+        </form>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-header reveal">
+            <span class="section-tag">Contact Us</span>
+            <h2>Get In Touch</h2>
+            <p>Have a question or want to discuss a project? We'd love to hear from you.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Address</h4>
+                        <p>123 Innovation Drive, Tech City, TC 12345</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@vecteron.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Business Hours</h4>
+                        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <form id="contactForm">
+                    <div class="form-grid">
+                        <div class="form-group" id="cg-name">
+                            <label>Name *</label>
+                            <input type="text" name="name" placeholder="Your name" required>
+                            <span class="form-error">Please enter your name</span>
+                        </div>
+                        <div class="form-group" id="cg-email">
+                            <label>Email *</label>
+                            <input type="email" name="email" placeholder="Your email" required>
+                            <span class="form-error">Please enter a valid email</span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;" id="cg-subject">
+                        <label>Subject *</label>
+                        <input type="text" name="subject" placeholder="Message subject" required>
+                        <span class="form-error">Please enter a subject</span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;" id="cg-message">
+                        <label>Message *</label>
+                        <textarea name="message" placeholder="Your message..." required></textarea>
+                        <span class="form-error">Please enter your message</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="contactSubmitBtn">
+                        <span class="spinner"></span>
+                        <span class="btn-text"><i class="fas fa-paper-plane"></i> Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <i class="fas fa-cube"></i>
+                    Vecteron<span>.</span>
+                </a>
+                <p>Transforming businesses through innovative digital solutions. Your trusted partner for technology excellence.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">UI/UX Design</a></li>
+                    <li><a href="#">Cloud Solutions</a></li>
+                    <li><a href="#">Cybersecurity</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#project">Project Request</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vecteron Solutions Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/15551234567" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // ===================== TOAST SYSTEM =====================
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icon = type === 'success' ? 'fa-check-circle' : 
+                        type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+            
+            toast.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger animation
+            requestAnimationFrame(() => {
+                toast.classList.add('show');
+            });
+            
+            // Remove after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
+
+        // ===================== FORM VALIDATION =====================
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function clearErrors(form) {
+            form.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
+        }
+
+        function showError(groupId) {
+            document.getElementById(groupId).classList.add('error');
+        }
+
+        function setLoading(btn, loading) {
+            btn.disabled = loading;
+            btn.classList.toggle('loading', loading);
+        }
+
+        // ===================== FORMSPREE INTEGRATION =====================
+        // Replace these with your actual Formspree form IDs after signing up at formspree.io
+        const FORMSPREE_CONTACT_ENDPOINT = 'https://formspree.io/f/YOUR_CONTACT_FORM_ID';
+        const FORMSPREE_PROJECT_ENDPOINT = 'https://formspree.io/f/YOUR_PROJECT_FORM_ID';
+
+        async function submitToFormspree(endpoint, data, btn) {
+            setLoading(btn, true);
+            
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    showToast('Message sent successfully! We\'ll get back to you soon.', 'success');
+                    return true;
+                } else {
+                    const errorData = await response.json();
+                    showToast(errorData.error || 'Something went wrong. Please try again.', 'error');
+                    return false;
+                }
+            } catch (error) {
+                showToast('Network error. Please check your connection and try again.', 'error');
+                return false;
+            } finally {
+                setLoading(btn, false);
+            }
+        }
+
+        // ===================== CONTACT FORM =====================
+        const contactForm = document.getElementById('contactForm');
+        const contactBtn = document.getElementById('contactSubmitBtn');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearErrors(contactForm);
+            
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            let hasError = false;
+            
+            if (!data.name || data.name.trim() === '') {
+                showError('cg-name');
+                hasError = true;
+            }
+            if (!data.email || !validateEmail(data.email)) {
+                showError('cg-email');
+                hasError = true;
+            }
+            if (!data.subject || data.subject.trim() === '') {
+                showError('cg-subject');
+                hasError = true;
+            }
+            if (!data.message || data.message.trim() === '') {
+                showError('cg-message');
+                hasError = true;
+            }
+            
+            if (hasError) {
+                showToast('Please fix the errors above.', 'error');
+                return;
+            }
+            
+            const success = await submitToFormspree(FORMSPREE_CONTACT_ENDPOINT, data, contactBtn);
+            if (success) contactForm.reset();
+        });
+
+        // ===================== PROJECT FORM =====================
+        const projectForm = document.getElementById('projectForm');
+        const projectBtn = document.getElementById('projectSubmitBtn');
+
+        projectForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearErrors(projectForm);
+            
+            const formData = new FormData(projectForm);
+            const data = Object.fromEntries(formData);
+            let hasError = false;
+            
+            if (!data.name || data.name.trim() === '') {
+                showError('pg-name');
+                hasError = true;
+            }
+            if (!data.email || !validateEmail(data.email)) {
+                showError('pg-email');
+                hasError = true;
+            }
+            if (!data.projectType) {
+                showError('pg-type');
+                hasError = true;
+            }
+            if (!data.description || data.description.trim() === '') {
+                showError('pg-desc');
+                hasError = true;
+            }
+            
+            if (hasError) {
+                showToast('Please fix the errors above.', 'error');
+                return;
+            }
+            
+            const success = await submitToFormspree(FORMSPREE_PROJECT_ENDPOINT, data, projectBtn);
+            if (success) projectForm.reset();
+        });
+
+        // ===================== MOBILE MENU =====================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // ===================== SCROLL REVEAL =====================
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                const revealPoint = 150;
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // ===================== NAVBAR SHADOW =====================
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(0, 0, 0, 0.2)' : 'none';
+        });
+
+        // ===================== SMOOTH SCROLL =====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>"""
+
+with open('/mnt/agents/output/vecteron_website.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Done!")
